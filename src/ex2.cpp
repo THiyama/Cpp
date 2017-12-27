@@ -12,10 +12,12 @@ using namespace std;
 
 int main(){
 	string name;
-	uint8_t answer;
-	cout << "あなたのお名前をお伺いしてもよろしいですか？" << endl;
-	cin >> answer;
-	if(answer == 1){
+	string answer_s;
+	uint8_t answer_ui8;
+	cout << "あなたのお名前をお伺いしてもよろしいですか？y:1,n:0" << endl;
+	cin >> answer_s;
+	answer_ui8 = std::stoi(answer_s);
+	if(answer_ui8 == 1){
 		cin >> name;
 		cout << "あなたは" << name << "さんと仰るのですね。こんにちは" << endl;
 	} else {
