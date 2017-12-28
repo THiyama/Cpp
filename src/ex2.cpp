@@ -1,5 +1,4 @@
-/*
- * ex3.cpp
+/* ex2.cpp
  *
  *  Created on: 2017/12/28
  *      Author: PCーUSER
@@ -9,21 +8,40 @@
 #include <iostream>
 #include <String>
 
-int main(){
+class Neko {
 	std::string name;
-	std::string answer_s;
-	uint8_t answer_ui8;
-	std::cout << "あなたのお名前をお伺いしてもよろしいですか？y:1,n:0" << std::endl;
-	std::cin >> answer_s;
-	answer_ui8 = std::stoi(answer_s);
-	if(answer_ui8 == 1){
-		std::cin >> name;
-		std::cout << "あなたは" << name << "さんと仰るのですね。こんにちは" << std::endl;
-	} else {
-		std::cout << "このご時世、個人情報は大事ですからね。それでは。" << std::endl;
-	}
+public :
+	Neko(std::string s);
+	void naku() const;
+};
 
-	return 0;
+Neko::Neko(std::string s):name(s){} //
+
+void Neko::naku() const{ //Nekoクラスの中のnaku関数だよという意味のNeko::naku()
+	std::cout << "俺は" << name << "だにゃん！" << std::endl;
 }
 
+class Inu {
+	std::string name;
+public :
+	Inu(std::string);
+	void naku() const;
+};
 
+Inu::Inu(std::string s):name(s){}
+
+void Inu::naku() const{ //Inuクラスの中のnaku関数だよという意味のInu::naku()
+	std::cout << "僕は" << name << "だワン！" << std::endl;
+}
+
+int main(){
+	std::string s;
+	std::cout << "犬を生成します。名前を入力してください" << std::endl;
+	std::cin >> s;
+
+	Inu pochi(s);
+	std::cout << "あなたの名付けた犬がメモリ上に生成されました" << std::endl;
+	std::cout << "犬が鳴きます" << std::endl;
+
+	pochi.naku();
+}
