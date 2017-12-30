@@ -8,6 +8,38 @@
 #include <cstdlib>   //rand()を使うために必要
 #include <ctime>
 
+class Omikuji {
+	int lacky;
+public :
+	Omikuji();
+	void hiku();
+};
+
+Omikuji::Omikuji(){
+	srand((unsigned)time(NULL));
+	std::cout<<"自分のラッキーナンバー（1～5）を入力してください。"<<std::endl;
+	std::cin>>lacky;  //自分のラッキーナンバーを代入
+}
+
+void Omikuji::hiku(){
+	int x;
+    x = rand() % 5 + 1;   //1～5の乱数を発生させ、ｘに代入、これが引いたおみくじの番号
+    std::cout << "あなたの運勢は";
+    if(x == lacky){                                            //xとunが等しければ大吉
+        std::cout << "大吉ということです。" << std::endl;
+    }
+    else{                                                    //xとunが等しくなければ「普通」
+        std::cout<<"並みということです。"<<std::endl;
+    }
+}
+
+int main(){
+	Omikuji today;
+	today.hiku();
+}
+
+
+/*
 int main()
 {
 	srand( (unsigned)time( NULL ) );
