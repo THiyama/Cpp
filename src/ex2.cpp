@@ -7,7 +7,66 @@
 #include <iostream>
 #include <cstdlib>   //rand()を使うために必要
 #include <ctime>
+#include <String>
 
+class Neko {
+	std::string name;
+	int hp;
+public :
+	Neko(std::string s):name(s),hp(10){}
+	int TakeMeet();
+	int Naku();
+	int givemeMeet();
+};
+
+int Neko::TakeMeet(){
+	int Meet;
+	std::cout << "餌をくれるのにゃ！いくつくれるにゃ？" << std::endl;
+	std::cin >> Meet;
+	std::cout << "にゃあん 餌を " << Meet << " くれるのかにゃぁ！にゃにゃ" << std::endl;
+	return hp+=Meet;
+}
+
+int Neko::Naku(){
+	std::cout << "にゃあん 俺の名前は" << name << "だにゃぁ" << std::endl;
+	hp-=5;
+	if(hp <= 5){
+		std::cout << "そろそろ餌が足りないにゃ？" << std::endl;
+	}
+	return hp;
+}
+
+int Neko::givemeMeet(){
+	if(hp != 1){
+		std::cout << "餌が足りないにゃ！餌をよこすにゃ！！" << std::endl;
+	}
+	return hp--;
+}
+
+int main(){
+	int neko_hp;
+	int no;
+	std::string neko_name;
+	std::cout << "捨て猫にゃ！拾ってくれるにゃ？！名前を付けてほしいにゃ！" << std::endl;
+	std::cin >> neko_name;
+	Neko dora(neko_name);
+	while(neko_hp != 0){
+		std::cout << "なんにゃ！何をしてくれるにゃ？(0:餌をあげる,1:鳴いてもらう)" << std::endl;
+		std::cin >> no;
+		if(no == 0){
+			neko_hp = dora.TakeMeet();
+		} else {
+			if(neko_hp >= 5){
+				neko_hp = dora.Naku();
+			} else {
+				neko_hp = dora.givemeMeet();
+			}
+		}
+	}
+	std::cout << "も、もう限界にゃぁ・・・他のご主人様の所に行ってくるにゃ！！" << std::endl;
+}
+
+/*
 class Omikuji {
 	int lacky;
 public :
